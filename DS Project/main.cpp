@@ -6,7 +6,7 @@
 //#include "Source.h"
 
 using namespace std;
-//hi
+
 int main() {
 
 	// VARIABLE DECLARATION

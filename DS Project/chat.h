@@ -4,8 +4,6 @@
 #include<stack>
 #include<queue>
 #include<fstream>
-////////
-////this is a comment
 
 
 using namespace std;

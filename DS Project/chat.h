@@ -13,8 +13,8 @@ class User {
 	string username;
 	string password;
 	vector<Contact> contacts;
-	stack<Message*> sentMessages;
-	stack<Message*> receivedMessages;
+	stack<Message> *sentMessages;
+	stack<Message> *receivedMessages;
 	queue<Message>* favMessages;
 
 	ifstream dataToRead;

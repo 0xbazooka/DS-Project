@@ -12,10 +12,10 @@ class User {
 	int id;
 	string username;
 	string password;
-	vector<Contact> contacts;
-	stack<Message*> sentMessages;
-	stack<Message*> receivedMessages;
-	queue<Message>* favMessages;
+	vector<int> contacts;
+	stack <int> sentMessages;
+	stack<int> receivedMessages;
+	queue<int> favMessages;
 
 	ifstream dataToRead;
 	ofstream dataToWrite;
@@ -39,15 +39,15 @@ public:
 };
 
 class Message {
-	string content;
-	User* from;
-	User* to;
-	bool fav = false;
-};
-
-
-class Contact {
 	int id;
-	vector<Message>* messages; //view recieved msgs
-	int msgCount; //sort by no. of msgs
+	int senderID;
+	//int recepientID;
+	string content;
 };
+
+
+//class Contact {
+//	int id;
+//	vector<Message>* messages; //view recieved msgs
+//	int msgCount; //sort by no. of msgs
+//};

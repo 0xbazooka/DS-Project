@@ -74,7 +74,8 @@ void User::Register() {
 	dataToWrite.open("Userdata.txt", ios::app);
 	fid = 0;
 
-
+	//  
+	// 
 	// USERNAME REGISTERATION
 	// TO CHECK THAT USERNAME DIDN'T EXIST BEFORE
 	do {

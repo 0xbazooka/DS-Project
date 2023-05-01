@@ -126,18 +126,57 @@ void User::Register() {
 
 
 //SEND/UNDO MESSAGE
-void User::sendMessage(string message) {
-	messages.push(message);
-	cout << "Message sent: " << message << endl;
+//void User::sendMessage(string message) {
+//	messages.push(message);
+//	cout << "Message sent: " << message << endl;
+//}
+//
+//void User::undoMessage() {
+//	if (!messages.empty()) {
+//		string lastMessage = messages.top();
+//		messages.pop();
+//		cout << "Last message undone: " << lastMessage << endl;
+//	}
+//	else {
+//		cout << "No messages to undo" << endl;
+//	}
+//}
+void User::viewSentMessages(int id) {
+	if (id == this->getId)
+	{
+		if (sentMessages.empty()) {
+			cout << "Sorry!! There is no messages sent." << endl;
+		}
+		else {
+			while (!sentMessages.empty()) {
+				cout << sentMessages.top() << "\t";
+				sentMessages.pop();
+			}
+		}
+	}
 }
 
-void User::undoMessage() {
-	if (!messages.empty()) {
-		string lastMessage = messages.top();
-		messages.pop();
-		cout << "Last message undone: " << lastMessage << endl;
+void User::viewReceivedMessages(int contactId) { // 1 2 3 4 5 
+	
+			for (int i = 0; i < listOfContacts.size(); i++) {
+				if (contactId = listOfContacts[i]) {
+					if (receivedMessages.empty()) {
+						cout << "Sorry!! There is no messages received." << endl;
+					}
+					else {
+						while (!receivedMessages.empty()) {
+							cout << receivedMessages.top() << "\t";
+							receivedMessages.pop();
+						}
+					}
+				}
+				else {
+					cout << "Sorry!! This contact is not found." << endl;
+				}
+			}
+		}
+		else {
+			cout << "Sorry!! This user is not found." << endl;
+		}
 	}
-	else {
-		cout << "No messages to undo" << endl;
-	}
-}
+

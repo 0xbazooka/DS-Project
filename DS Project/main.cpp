@@ -8,20 +8,25 @@
 using namespace std;
 
 int main() {
-
-	// VARIABLE DECLARATION
-
+	
 	int choice;
-	User user;
 
-	cout << "TO LOGIN PRESS 1\nTO REGISTER PRESS 2\n";
-	cin >> choice;
-	switch (choice) {
-	case 1:user.Login();
-		break;
-	case 2:user.Register();
-		break;
+	while (true) {
+		cout << "Enter your choice" << endl;
+		case(choice)
+			1:
 	}
 
-	return 0;
+	User user;
+
+	//cout << "TO LOGIN PRESS 1\nTO REGISTER PRESS 2\n";
+	//cin >> choice;
+	//switch (choice) {
+	//case 1:user.Login();
+	//	break;
+	//case 2:user.Register();
+	//	break;
+	//}
+
+	//return 0;
 }

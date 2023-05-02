@@ -23,7 +23,7 @@ int main() {
 	}
 	 
 
-	while (true) {
+	while (bool x = true) {
 		cout << "Choose one of the following options:" << endl;
 		cout << "1. send a message " << endl;
 		cout << "2. undo a sent message" << endl;
@@ -44,10 +44,37 @@ int main() {
 				//User::sendMessage();
 				break;
 			case 2:
-
+				User::undoMessage();
 				break;
 			case 3:
-
+				User::addContact(int c);
+				break;
+			case 4:
+				User::rmContact(int c);
+				break;
+			case 5:
+				User::viewContacts(User u);
+				break;
+			case 6:
+				User::searchContacts(User u);
+				break;
+			case 7:
+				User::viewSentMsgs();
+				break;
+			case 8:
+				User::viewReceivedMsgs(int id);
+				break;
+			case 9:
+				User::addFavMsg();
+				break;
+			case 10:
+				User::rmFavMsg();
+				break;
+			case 11:
+				User::viewFavMsgs();
+				break;
+			case 12:
+				x = false;
 				break;
 
 		}

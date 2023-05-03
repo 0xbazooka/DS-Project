@@ -44,34 +44,34 @@ int main() {
 				//User::sendMessage();
 				break;
 			case 2:
-				User::undoMessage();
+				//User::undoMessage();
 				break;
 			case 3:
-				User::addContact(int c);
+				//User::addContact(int c);
 				break;
 			case 4:
-				User::rmContact(int c);
+				//User::rmContact(int c);
 				break;
 			case 5:
-				User::viewContacts(User u);
+				//User::viewContacts(User u);
 				break;
 			case 6:
-				User::searchContacts(User u);
+				//User::searchContacts(User u);
 				break;
 			case 7:
-				User::viewSentMsgs();
+				//User::viewSentMsgs();
 				break;
 			case 8:
-				User::viewReceivedMsgs(int id);
+				//User::viewReceivedMsgs(int id);
 				break;
 			case 9:
-				User::addFavMsg();
+				//User::addFavMsg();
 				break;
 			case 10:
-				User::rmFavMsg();
+				//User::rmFavMsg();
 				break;
 			case 11:
-				User::viewFavMsgs();
+				//User::viewFavMsgs();
 				break;
 			case 12:
 				x = false;

@@ -125,19 +125,19 @@ void User::Register() {
 }
 
 
-//SEND/UNDO MESSAGE
-void User::sendMessage(string message) {
-	messages.push(message);
-	cout << "Message sent: " << message << endl;
-}
-
-void User::undoMessage() {
-	if (!messages.empty()) {
-		string lastMessage = messages.top();
-		messages.pop();
-		cout << "Last message undone: " << lastMessage << endl;
-	}
-	else {
-		cout << "No messages to undo" << endl;
-	}
-}
+////SEND/UNDO MESSAGE
+//void User::sendMessage(string message) {
+//	messages.push(message);
+//	cout << "Message sent: " << message << endl;
+//}
+//
+//void User::undoMessage() {
+//	if (!messages.empty()) {
+//		string lastMessage = messages.top();
+//		messages.pop();
+//		cout << "Last message undone: " << lastMessage << endl;
+//	}
+//	else {
+//		cout << "No messages to undo" << endl;
+//	}
+//}

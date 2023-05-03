@@ -15,7 +15,7 @@ class User {
 	int id;
 	string username;
 	string password;
-	set<User> contacts; //set 3shan rm (logn) msh (n)
+	set<int> contacts; //set 3shan rm (logn) msh (n)
 	stack<Message> sentMessages;
 	unordered_map<int, vector<Message>> receivedMessages;//unordered_map 3shan a7san fel data el so8ayara
 	queue<Message> favMessages;
@@ -32,7 +32,7 @@ public:
 	string getPassword();
 	void Register();
 	void Login();
-	void sendMessage(string message);
+	void sendMessage(int idOfReceived, string message);
 	void undoMessage();
 	void addContact(int c);
 	void rmContact(int c);

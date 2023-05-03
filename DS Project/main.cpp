@@ -9,20 +9,22 @@ using namespace std;
 
 int main() {
 
-
+	//LOGIN AND REGISTER FIRST
 	int choice;
+	int currentUserIndex = -1;
 	vector <User> users;
-
+	User user;
 	cout << "to login press 1\nto register press 2\n";
 	cin >> choice;
 	switch (choice) {
-	case 1:User.Login();
+	case 1:user.Login();
+
 		break;
-	case 2:User.Register();
+	case 2:user.Register();
 		break;
 	}
 	 
-
+	//CHOOSING A FUNCTION AFTER LOGGING IN
 	while (bool x = true) {
 		cout << "Choose one of the following options:" << endl;
 		cout << "1. send a message " << endl;
@@ -40,39 +42,67 @@ int main() {
 
 		cin >> choice;
 
+		//declaring needed variables in the switch case
+		string msg; //error when inside the switch
+		int id;
+		int idOfRecepient;
+
 		switch (choice) {
 			case 1:
-				//User::sendMessage();
+
+				cout << "Enter the id of the user you want to send the message: " << endl;
+				cin >> idOfRecepient;
+				cout << "Enter your message:";
+				cin >> msg;
+				user.sendMessage(idOfRecepient, msg);
 				break;
+
+
 			case 2:
-				//User::undoMessage();
+				user.undoMessage();
 				break;
+
 			case 3:
-				//User::addContact(int c);
+				cout << " what is the id of the user you want to add?";
+				cin >> id;
+				user.addContact(id);
 				break;
+
 			case 4:
-				//User::rmContact(int c);
+				cout << " what's the contact's id you want to remove";
+				cin >> id;
+				user.rmContact(id);
 				break;
+
 			case 5:
-				//User::viewContacts(User u);
+				//user.viewContacts();///////////
 				break;
+
 			case 6:
-				//User::searchContacts(User u);
+				//user.searchContacts(User u);//////////
 				break;
+
 			case 7:
-				//User::viewSentMsgs();
+				user.viewSentMsgs();
+
 				break;
 			case 8:
-				//User::viewReceivedMsgs(int id);
+				cout << "which contact's messages you want to see? ";
+				cin >> id;
+				user.viewReceivedMsgs(id);
 				break;
+
 			case 9:
-				//User::addFavMsg();
+
+				user.addFavMsg();
 				break;
+
 			case 10:
-				//User::rmFavMsg();
+				user.rmFavMsg();
 				break;
+
 			case 11:
-				//User::viewFavMsgs();
+				user.viewFavMsgs();
 				break;
 			case 12:
 				x = false;

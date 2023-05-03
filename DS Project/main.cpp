@@ -38,6 +38,7 @@ int main() {
 		cout << "11. view your fav messages " << endl;
 		cout << "12. exit " << endl;
 
+		cin >> choice;
 
 		switch (choice) {
 			case 1:

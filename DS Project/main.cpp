@@ -11,7 +11,7 @@ int main() {
 
 	//LOGIN AND REGISTER FIRST
 	int choice;
-	int currentUserIndex = -1;
+	//int currentUserIndex = -1;
 	vector <User> users;
 	User user;
 	cout << "to login press 1\nto register press 2\n";
@@ -97,7 +97,7 @@ int main() {
 				break;
 
 			case 9:
-				user.addFavMsg();
+				user.addFavMsg();////
 				break;
 
 			case 10:

@@ -34,10 +34,10 @@ public:
 	void Login();
 	void sendMessage(int idOfReceived, string message);
 	void undoMessage();
-	void addContact(int c);
-	void rmContact(int c);
-	void viewContacts(User u); //sorted by no. of msgs
-	bool searchContacts(User u);
+	void addContact(int userID);
+	void rmContact(int contactID);
+	void viewContacts(); //sorted by no. of msgs
+	bool searchContacts(int id);
 	void viewSentMsgs();
 	void viewReceivedMsgs(int id); //from a specific contact
 	void addFavMsg(); //WHATS THE PARAMETER

@@ -55,45 +55,48 @@ int main() {
 				cout << "Enter your message:";
 				cin >> msg;
 				user.sendMessage(idOfRecepient, msg);
+
 				break;
 
 
 			case 2:
 				user.undoMessage();
+				//cout << "deleted your last sent msg successfully." << endl;
 				break;
 
 			case 3:
-				cout << " what is the id of the user you want to add?";
+				cout << " what is the id of the user you want to add?" << endl;
 				cin >> id;
 				user.addContact(id);
 				break;
 
 			case 4:
-				cout << " what's the contact's id you want to remove";
+				cout << " what's the contact's id you want to remove" << endl;
 				cin >> id;
 				user.rmContact(id);
 				break;
 
 			case 5:
-				//user.viewContacts();///////////
+				user.viewContacts();
 				break;
 
 			case 6:
-				//user.searchContacts(User u);//////////
+				cout << "Enter the id of contact you want to search for:" << endl;
+				cin >> id;
+				user.searchContacts(id);
 				break;
 
 			case 7:
 				user.viewSentMsgs();
-
 				break;
+
 			case 8:
-				cout << "which contact's messages you want to see? ";
+				cout << "which contact's messages you want to see? " << endl;
 				cin >> id;
 				user.viewReceivedMsgs(id);
 				break;
 
 			case 9:
-
 				user.addFavMsg();
 				break;
 
@@ -104,6 +107,7 @@ int main() {
 			case 11:
 				user.viewFavMsgs();
 				break;
+
 			case 12:
 				x = false;
 				break;

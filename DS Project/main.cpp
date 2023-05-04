@@ -12,7 +12,7 @@ int main() {
 	//LOGIN AND REGISTER FIRST
 	int choice;
 	//int currentUserIndex = -1;
-	vector <User> users;
+	vector <User*> users;
 	User user;
 	cout << "to login press 1\nto register press 2\n";
 	cin >> choice;
@@ -55,9 +55,7 @@ int main() {
 				cout << "Enter your message:";
 				cin >> msg;
 				user.sendMessage(idOfRecepient, msg);
-
 				break;
-
 
 			case 2:
 				user.undoMessage();

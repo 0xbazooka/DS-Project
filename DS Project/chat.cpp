@@ -124,6 +124,11 @@ void User::Register() {
 	dataToWrite.close();
 }
 
+void User::viewFavMsgs() {
+
+
+
+}
 
 ////SEND/UNDO MESSAGE
 //void User::sendMessage(string message) {

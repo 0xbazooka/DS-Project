@@ -52,11 +52,7 @@ class Message {
 	int senderID;
 	int receiverID;
 	string content;
+
+	
 };
 
-
-//class Contact {
-//	int id;
-//	vector<message>* messages; //view recieved msgs
-//	int msgcount; //sort by no. of msgs
-//};

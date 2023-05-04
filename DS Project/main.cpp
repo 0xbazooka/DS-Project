@@ -46,6 +46,8 @@ int main() {
 		string msg; //error when inside the switch
 		int id;
 		int idOfRecepient;
+		Message m;
+		queue<Message> favQ;
 
 		switch (choice) {
 			case 1:
@@ -95,15 +97,15 @@ int main() {
 				break;
 
 			case 9:
-				user.addFavMsg();////
+				user.addFavMsg(m);////
 				break;
 
 			case 10:
-				user.rmFavMsg();
+				user.rmFavMsg(m);
 				break;
 
 			case 11:
-				user.viewFavMsgs();
+				user.viewFavMsgs(favQ);
 				break;
 
 			case 12:

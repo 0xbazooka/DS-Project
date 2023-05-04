@@ -124,11 +124,51 @@ void User::Register() {
 	dataToWrite.close();
 }
 
-void User::viewFavMsgs() {
-
-
-
+void User::sendMessage(int idOfReceived, string message)
+{
 }
+
+void User::undoMessage()
+{
+}
+
+void User::addContact(int userID)
+{
+}
+
+void User::rmContact(int contactID)
+{
+}
+
+void User::viewContacts()
+{
+}
+
+bool User::searchContacts(int id)
+{
+	return false;
+}
+
+void User::viewSentMsgs()
+{
+}
+
+void User::viewReceivedMsgs(int id)
+{
+}
+
+void User::addFavMsg(Message m)
+{
+}
+
+void User::rmFavMsg(Message m)
+{
+}
+
+void User::viewFavMsgs(queue<Message> fav)
+{
+}
+
 
 ////SEND/UNDO MESSAGE
 //void User::sendMessage(string message) {

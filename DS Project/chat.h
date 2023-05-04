@@ -4,6 +4,7 @@
 #include<stack>
 #include<queue>
 #include<fstream>
+//chat.h file
 #include <set>
 #include <unordered_map>
 #include <vector>
@@ -40,9 +41,9 @@ public:
 	bool searchContacts(int id);
 	void viewSentMsgs();
 	void viewReceivedMsgs(int id); //from a specific contact
-	void addFavMsg(); //WHATS THE PARAMETER
-	void rmFavMsg(); //rm oldest fav msg
-	void viewFavMsgs();
+	void addFavMsg(Message m); //WHATS THE PARAMETER
+	void rmFavMsg(Message m); //rm oldest fav msg
+	void viewFavMsgs(queue<Message> fav);
 
 };
 

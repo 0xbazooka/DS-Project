@@ -1,4 +1,4 @@
-//chat.cpp
+//chat.cpp file
 #include "chat.h"
 using namespace std;
 

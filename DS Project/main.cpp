@@ -110,6 +110,9 @@ int main() {
 				x = false;
 				break;
 
+			default:
+				cout << "please select one of the options" << endl;
+				//main();
 		}
 	}
 

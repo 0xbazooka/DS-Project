@@ -12,7 +12,23 @@
 
 using namespace std;
 
+class Message {
+
+	int id;
+	int senderID;
+	int recipientID;
+	string content;
+	
+	Message(int id, string content, int senderID, int recipientID) {
+		this->id = id;
+		this->content = content;
+		this->senderID = senderID;
+		this->recipientID = recipientID;
+	}
+};
+
 class User {
+
 	int id;
 	string username;
 	string password;
@@ -28,6 +44,10 @@ class User {
 	int fid;
 
 public:
+
+	User(int id, string username, string password);
+	~User();
+
 	int getId();
 	string getUsername();
 	string getPassword();
@@ -47,12 +67,4 @@ public:
 
 };
 
-class Message {
-	int id;
-	int senderID;
-	int receiverID;
-	string content;
-
-	
-};
 

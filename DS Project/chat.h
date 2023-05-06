@@ -19,8 +19,12 @@ class Message {
 	int recipientID;
 	string content;
 	
+	Message();
 	Message(int id, int senderID, int recipientID, string content);
 	~Message();
+	/*void addFavMsg(Message m);
+	* void rmFavMsg(Message m);
+	*/
 };
 
 class User {
@@ -58,7 +62,7 @@ public:
 	void viewSentMsgs();
 	void viewReceivedMsgs(int id); //from a specific contact
 	void addFavMsg(Message m); //WHATS THE PARAMETER
-	void rmFavMsg(Message m); //rm oldest fav msg
+	void rmFavMsg(queue<Message>& favMessages); //rm oldest fav msg
 	void viewFavMsgs(queue<Message> fav);
 
 };

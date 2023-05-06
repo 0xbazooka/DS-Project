@@ -2,8 +2,16 @@
 #include "chat.h"
 using namespace std;
 
+Message::Message() {
+
+	id = 0;
+	senderID = 0;
+	recipientID = 0;
+	content = "";
+}
 
 Message::Message(int id, int senderID, int recipientID, string content) {
+
 	this->id = id;
 	this->senderID = senderID;
 	this->recipientID = recipientID;
@@ -186,11 +194,22 @@ void User::viewReceivedMsgs(int id)
 
 void User::addFavMsg(Message m)
 {
+
 }
 
-void User::rmFavMsg(Message m)
+void User::rmFavMsg(queue<Message>& favMessages)
 {
+	if (favMessages.empty())
+	{
+		cout << "No messages in favorites to remove.\n";
+	}
+	else
+	{
+		favMessages.pop();
+		cout << "The message has been removed successfully.\n";
+	}
 }
+
 
 void User::viewFavMsgs(queue<Message> fav)
 {

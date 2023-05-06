@@ -19,12 +19,8 @@ class Message {
 	int recipientID;
 	string content;
 	
-	Message(int id, string content, int senderID, int recipientID) {
-		this->id = id;
-		this->content = content;
-		this->senderID = senderID;
-		this->recipientID = recipientID;
-	}
+	Message(int id, int senderID, int recipientID, string content);
+	~Message();
 };
 
 class User {

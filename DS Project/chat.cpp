@@ -2,6 +2,30 @@
 #include "chat.h"
 using namespace std;
 
+
+Message::Message(int id, int senderID, int recipientID, string content) {
+	this->id = id;
+	this->senderID = senderID;
+	this->recipientID = recipientID;
+	this->content = content;
+}
+
+Message::~Message()
+{
+}
+
+User::User(int id, string username, string password)
+{
+    	this->id = id;
+		this->username = username;
+		this->password = password;
+}
+
+User::~User()
+{
+}
+
+
 string User::getUsername()
 {
 	return username;
@@ -16,6 +40,9 @@ int User::getId()
 {
 	return id;
 }
+
+
+
 
 void User::Login()
 {

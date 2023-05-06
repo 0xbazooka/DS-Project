@@ -1,7 +1,6 @@
-//chat.cpp file
 #include "chat.h"
-using namespace std;
 
+//MESSAGE CLASS 
 Message::Message() {
 
 	id = 0;
@@ -9,7 +8,6 @@ Message::Message() {
 	recipientID = 0;
 	content = "";
 }
-
 Message::Message(int id, int senderID, int recipientID, string content) {
 
 	this->id = id;
@@ -17,41 +15,56 @@ Message::Message(int id, int senderID, int recipientID, string content) {
 	this->recipientID = recipientID;
 	this->content = content;
 }
-
 Message::~Message()
 {
 }
 
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// USER CLASS 
+User::User() {
+	id = 0;
+	username = "";
+	password = "";
+}
 User::User(int id, string username, string password)
 {
     	this->id = id;
 		this->username = username;
 		this->password = password;
 }
-
 User::~User()
 {
 }
 
-
-string User::getUsername()
-{
-	return username;
+// Setters
+void User::setId(int id) {
+	this->id = id;
+}
+void User::setUsername(string username) {
+	this->username = username;
+}
+void User::setPassword(string password) {
+	this->password = password;
 }
 
-string User::getPassword()
-{
+
+
+// Getters
+int User::getId() {
+	return id;
+}
+string User::getUsername() {
+	return username;
+}
+string User::getPassword() {
 	return password;
 }
 
-int User::getId()
-{
-	return id;
-}
-
-
-
-
+// Functions Implementation
 void User::Login()
 {
 	// DECLARATION
@@ -188,14 +201,31 @@ void User::viewSentMsgs()
 {
 }
 
-void User::viewReceivedMsgs(int id)
+void User::viewMessagesFromContact(int contactId)
 {
+	if (receivedMessages.count(contactId) == 0) {
+		cout << "There are no messages from the contact with ID " << contactId << endl;
+	}
+	vector<Message>& messages = receivedMessages.at(contactId);
+	//it creates a reference to a vector of Message objects  
+	//associated with the specified contactId using the at() method of the receivedMessages container
+	auto iterator = messages.begin(); //this is iterator for the beggining of the vector
+	cout << "The received Messages from the contact with ID " << contactId << ":" << endl;
+
+	while (iterator != messages.end()) { // messages --> vector
+		Message& message = *iterator;  // to reference the iterator to equal the message content
+		//it creates a reference to the current message pointed to by the iterator
+		cout << message.getContent() << endl;
+		++iterator;  // increase the iterator to the next message
+	}
 }
 
-void User::addFavMsg(Message m)
+void User::addFavMsg(queue<Message>& favMessages )
 {
 
+
 }
+//
 
 void User::rmFavMsg(queue<Message>& favMessages)
 {
@@ -209,7 +239,7 @@ void User::rmFavMsg(queue<Message>& favMessages)
 		cout << "The message has been removed successfully.\n";
 	}
 }
-
+//done
 
 void User::viewFavMsgs(queue<Message> fav)
 {

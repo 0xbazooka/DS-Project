@@ -1,9 +1,5 @@
-//main.cpp
-#include<iostream>
-#include<fstream>
-#include"chat.h"
+#include"chat.cpp"
 #include<cstdlib>
-//#include "Source.h"
 
 using namespace std;
 
@@ -12,7 +8,7 @@ int main() {
 	//LOGIN AND REGISTER FIRST
 	int choice;
 	//int currentUserIndex = -1;
-	vector <User*> users;
+	//vector <User*> users;
 	User user;
 	cout << "to login press 1\nto register press 2\n";
 	cin >> choice;
@@ -93,7 +89,7 @@ int main() {
 			case 8:
 				cout << "which contact's messages you want to see? " << endl;
 				cin >> id;
-				user.viewReceivedMsgs(id);
+				user.viewMessagesFromContact(id);
 				break;
 
 			case 9:

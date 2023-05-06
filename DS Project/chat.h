@@ -4,11 +4,9 @@
 #include<stack>
 #include<queue>
 #include<fstream>
-//chat.h file
 #include <set>
 #include <unordered_map>
 #include <vector>
-//#include <map>
 
 using namespace std;
 
@@ -19,6 +17,33 @@ class Message {
 	int recipientID;
 	string content;
 	
+public:
+	void setID(int id) {
+		this->id = id;
+	}
+	void setSenderID(int senderID) {
+		this->senderID = senderID;
+	}
+	void setRecipientID(int recipientID) {
+		this->recipientID = recipientID;
+	}
+	void setContent(string content) {
+		this->content = content;
+	}
+
+	int getID(){
+		return id;
+	}
+	int getSenderID() {
+		return senderID;
+	}
+	int getRecipientID() {
+		return recipientID;
+	}
+	string getContent() {
+		return content;
+	}
+
 	Message();
 	Message(int id, int senderID, int recipientID, string content);
 	~Message();
@@ -45,12 +70,25 @@ class User {
 
 public:
 
+	User();
 	User(int id, string username, string password);
 	~User();
 
+	//Setters
+	void setId(int id);
+	void setUsername(string username);
+	void setPassword(string password);
+	/*void setContacts(set<int> contacts);
+	void setSentMessages(stack<Message> sentMessages);
+	void setReceivedMessages(unordered_map<int, vector<Message>> receivedMessages);
+	void setFavMessages(queue<Message> favMessages);*/
+
+	//Getters
 	int getId();
 	string getUsername();
 	string getPassword();
+
+	// the functions
 	void Register();
 	void Login();
 	void sendMessage(int idOfReceived, string message);
@@ -60,8 +98,8 @@ public:
 	void viewContacts(); //sorted by no. of msgs
 	bool searchContacts(int id);
 	void viewSentMsgs();
-	void viewReceivedMsgs(int id); //from a specific contact
-	void addFavMsg(Message m); //WHATS THE PARAMETER
+	void viewMessagesFromContact(int contactId); //from a specific contact
+	void addFavMsg(queue<Message>& favMessages); //view messages needed
 	void rmFavMsg(queue<Message>& favMessages); //rm oldest fav msg
 	void viewFavMsgs(queue<Message> fav);
 

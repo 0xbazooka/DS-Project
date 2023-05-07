@@ -93,11 +93,11 @@ public:
 	void Login();
 	void sendMessage(int idOfReceived, string message);
 	void undoMessage();
-	void addContact(int userID);
-	void rmContact(int contactID);
-	void viewContacts(); //sorted by no. of msgs
+	void addContact(set<int>& contacts, int userID);
+	void rmContact(set<int>& contacts, int contactID);
+	void viewContactsByNumMessages(set<int> &contacts, unordered_map<int, vector<Message>> receivedMessages);
 	bool searchContacts(int id);
-	void viewSentMsgs();
+	void viewSentMsgs(stack<Message>& sentMessages);
 	void viewMessagesFromContact(int contactId); //from a specific contact
 	void addFavMsg(queue<Message>& favMessages); //view messages needed
 	void rmFavMsg(queue<Message>& favMessages); //rm oldest fav msg

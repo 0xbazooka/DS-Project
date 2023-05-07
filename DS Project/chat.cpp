@@ -174,33 +174,76 @@ void User::Register() {
 
 void User::sendMessage(int idOfReceived, string message)
 {
+
 }
 
 void User::undoMessage()
 {
+
 }
 
-void User::addContact(int userID)
+void User::addContact(set<int>& contacts, int userID)
 {
+	if (contacts.find(userID) != contacts.end())
+	{
+		cout << "Contact with ID " << userID << " already exists!" << endl;
+		return;
+	}
+	else{
+		contacts.insert(userID);
+		cout << "contact " << userID << " is added successfully" << endl << "############################";
+	}
+	
 }
+//done
 
-void User::rmContact(int contactID)
+void User::rmContact(set<int>& contacts, int contactID)
 {
+	auto it = contacts.find(contactID);
+	if (contacts.find(contactID) == contacts.end())
+	{
+		cout << "Contact with ID " << contactID << " not found!" << endl;
+		return;
+
+	}
+	else {
+		contacts.erase(it);
+		cout << "contact removed succssefully" << endl << "############################";
+	}
 }
+//done
 
-void User::viewContacts()
+void User::viewContactsByNumMessages(set<int>& contacts, unordered_map<int, vector<Message>> receivedMessages)
 {
+	vector<pair<int, int>> contactsWithNumMessages; // vector of pairs (contact ID, number of messages)
+	for (int contactId : contacts) {
+		int numMessages = receivedMessages[contactId].size();
+		contactsWithNumMessages.push_back(make_pair(contactId, numMessages));
+	}
+	sort(contactsWithNumMessages.begin(), contactsWithNumMessages.end(), [](const auto& a, const auto& b) {
+		return a.second > b.second; // sort by number of messages in descending order
+		});
+	for (auto& it : contactsWithNumMessages) {
+
+		cout << "Contact ID: " << it.first  << " - Number of messages: " << it.second << endl;
+	}
 }
 
 bool User::searchContacts(int id)
 {
-	return false;
+	
 }
 
-void User::viewSentMsgs()
+void User::viewSentMsgs(stack<Message>& sentMessages)
 {
+	stack<Message> tempStack = sentMessages;
+	cout << "All the sent messages:\n";
+	while (!tempStack.empty()) {
+		cout << "\t" << tempStack.top().getContent() << endl;
+		tempStack.pop();
+	}
 }
-
+//
 void User::viewMessagesFromContact(int contactId)
 {
 	if (receivedMessages.count(contactId) == 0) {
@@ -219,14 +262,13 @@ void User::viewMessagesFromContact(int contactId)
 		++iterator;  // increase the iterator to the next message
 	}
 }
-
+//
 void User::addFavMsg(queue<Message>& favMessages )
 {
 
 
 }
 //
-
 void User::rmFavMsg(queue<Message>& favMessages)
 {
 	if (favMessages.empty())
@@ -240,7 +282,6 @@ void User::rmFavMsg(queue<Message>& favMessages)
 	}
 }
 //done
-
 void User::viewFavMsgs(queue<Message> fav)
 {
 }

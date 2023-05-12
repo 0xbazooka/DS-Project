@@ -1,5 +1,6 @@
 #include "chat.h"
 
+
 //MESSAGE CLASS 
 Message::Message() {
 
@@ -20,9 +21,7 @@ Message::~Message()
 }
 
 
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//--------------------------------------------------------------------------------------------
 
 // USER CLASS 
 User::User() {
@@ -67,6 +66,12 @@ string User::getPassword() {
 // Functions Implementation
 void User::Login()
 {
+	ifstream dataToRead;
+	ofstream dataToWrite;
+	// FOR SEARCHING FILES
+	string fname, fpassword;
+	int fid;
+
 	// DECLARATION
 	dataToRead.open("Userdata.txt");
 	dataToWrite.open("Userdata.txt", ios::app);
@@ -115,6 +120,11 @@ void User::Login()
 
 void User::Register() {
 
+	ifstream dataToRead;
+	ofstream dataToWrite;
+	// FOR SEARCHING FILES
+	string fname, fpassword;
+	int fid;
 
 	// DECLARATION
 	bool flagu, flagi;
@@ -159,6 +169,11 @@ void User::Register() {
 	do {
 		flagi = true;
 		id = rand() % 1000 + 1000;
+		/*
+		if (userData.size() == 0)
+				id = 1000;
+			else
+				id = (userData[userData.size() - 1].f_id) + 1;*/
 		dataToRead.clear();
 		dataToRead.seekg(0, ios::beg);
 		while (dataToRead >> fname >> fpassword >> fid) {
@@ -180,7 +195,7 @@ void User::sendMessage(int idOfReceived, string message)
 void User::undoMessage()
 {
 
-}
+}//
 
 void User::addContact(set<int>& contacts, int userID)
 {
@@ -195,7 +210,6 @@ void User::addContact(set<int>& contacts, int userID)
 	}
 	
 }
-//done
 
 void User::rmContact(set<int>& contacts, int contactID)
 {
@@ -204,34 +218,55 @@ void User::rmContact(set<int>& contacts, int contactID)
 	{
 		cout << "Contact with ID " << contactID << " not found!" << endl;
 		return;
-
 	}
 	else {
 		contacts.erase(it);
 		cout << "contact removed succssefully" << endl << "############################";
 	}
 }
-//done
 
-void User::viewContactsByNumMessages(set<int>& contacts, unordered_map<int, vector<Message>> receivedMessages)
+
+void User::viewContactsByNumMessages(set<int>& contacts, unordered_map<int, vector<Message>> receivedMessages, set<int>& pinnedContacts)
 {
+	set <int>c = contacts;
+
+	//remove all pinned contacts from (tmp) contacts
+	// AND view them as they don't need sorting
+	for (auto& i : pinnedContacts) {
+		cout << "Pinned Contacts:" << i << endl;
+		c.erase(i);
+	}
+
 	vector<pair<int, int>> contactsWithNumMessages; // vector of pairs (contact ID, number of messages)
-	for (int contactId : contacts) {
+	for (int contactId : c) { 
 		int numMessages = receivedMessages[contactId].size();
 		contactsWithNumMessages.push_back(make_pair(contactId, numMessages));
 	}
 	sort(contactsWithNumMessages.begin(), contactsWithNumMessages.end(), [](const auto& a, const auto& b) {
 		return a.second > b.second; // sort by number of messages in descending order
 		});
+
+
+
+	//then the rest of contacts in descorder
 	for (auto& it : contactsWithNumMessages) {
 
-		cout << "Contact ID: " << it.first  << " - Number of messages: " << it.second << endl;
+		cout <<  it.first  << " - Number of messages: " << it.second << endl;
 	}
 }
 
-bool User::searchContacts(int id)
+bool User::searchContacts(int id, set<int>& contacts)
 {
-	
+
+	auto it = contacts.find(id);
+	if (it != contacts.end()) {
+		cout << "Contact( " << *it << ") is found" << endl;
+		return true;
+	}
+	else {
+		cout << "Element not found" << endl;
+		return false;
+	}
 }
 
 void User::viewSentMsgs(stack<Message>& sentMessages)
@@ -281,9 +316,23 @@ void User::rmFavMsg(queue<Message>& favMessages)
 		cout << "The message has been removed successfully.\n";
 	}
 }
-//done
+
 void User::viewFavMsgs(queue<Message> fav)
 {
+}//
+
+void User::pinContact(int c)
+{
+
+	bool found = searchContacts(c, contacts);
+	if (!found) {
+		cout << "this contact:" << c << "doesn't exist" << endl;
+	}
+	else {
+		pinnedContacts.insert(c);
+		cout << "contact pinned successfully" << endl;
+	}
+
 }
 
 

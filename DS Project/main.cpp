@@ -1,6 +1,6 @@
 #include"chat.cpp"
 #include<cstdlib>
-
+#include<map>
 using namespace std;
 
 int main() {
@@ -8,8 +8,7 @@ int main() {
 	//LOGIN AND REGISTER FIRST
 	int choice;
 	//int currentUserIndex = -1;
-	//vector <User*> users;
-	User user;
+	vector<User> users;
 	cout << "to login press 1\nto register press 2\n";
 	cin >> choice;
 	switch (choice) {
@@ -34,7 +33,8 @@ int main() {
 		cout << "9. add a message to favourites " << endl;
 		cout << "10. rm the oldest fav msg"<< endl;
 		cout << "11. view your fav messages " << endl;
-		cout << "12. exit " << endl;
+		cout << "12. Pin a contact" << endl;
+		cout << "13. exit " << endl;
 
 		cin >> choice;
 
@@ -44,6 +44,7 @@ int main() {
 		int idOfRecepient;
 		Message m();
 		queue<Message> favQ;
+		int current = user.getId();
 
 		switch (choice) {
 			case 1:
@@ -63,7 +64,7 @@ int main() {
 			case 3:
 				cout << " what is the id of the user you want to add?" << endl;
 				cin >> id;
-				user.addContact(id);
+				user.addContact(user.contacts, id);
 				break;
 
 			case 4:
@@ -73,7 +74,7 @@ int main() {
 				break;
 
 			case 5:
-				user.viewContacts();
+				user.viewContactsByNumMessages();
 				break;
 
 			case 6:
@@ -106,6 +107,18 @@ int main() {
 				break;
 
 			case 12:
+				int c;
+				if (user.pinnedContacts >= 3) {
+					cout << "Sorry, can't pin more than 3 contacts " << endl;
+				}
+				else {
+					cout << "Enter the contact you want to pin" << endl;
+					cin >> c;
+					user.pinContact(c);
+				}
+				break;
+
+			case 13:
 				x = false;
 				break;
 

@@ -13,7 +13,7 @@ using namespace std;
 class Message {
 
 	int id;
-	int senderID;
+	int  senderID;
 	int recipientID;
 	string content;
 	
@@ -52,6 +52,8 @@ public:
 	*/
 };
 
+
+
 class User {
 
 	int id;
@@ -61,12 +63,9 @@ class User {
 	stack<Message> sentMessages;
 	unordered_map<int, vector<Message>> receivedMessages;//unordered_map 3shan a7san fel data el so8ayara
 	queue<Message> favMessages;
+	set<int> pinnedContacts; //hi
 
-	ifstream dataToRead;
-	ofstream dataToWrite;
-	// FOR SEARCHING FILES
-	string fname, fpassword;
-	int fid;
+	
 
 public:
 
@@ -95,13 +94,15 @@ public:
 	void undoMessage();
 	void addContact(set<int>& contacts, int userID);
 	void rmContact(set<int>& contacts, int contactID);
-	void viewContactsByNumMessages(set<int> &contacts, unordered_map<int, vector<Message>> receivedMessages);
-	bool searchContacts(int id);
+	void viewContactsByNumMessages(set<int> &contacts, unordered_map<int, vector<Message>> receivedMessages, set<int>& pinnedContacts);
+	bool searchContacts(int id, set<int>& contacts);
 	void viewSentMsgs(stack<Message>& sentMessages);
 	void viewMessagesFromContact(int contactId); //from a specific contact
 	void addFavMsg(queue<Message>& favMessages); //view messages needed
 	void rmFavMsg(queue<Message>& favMessages); //rm oldest fav msg
 	void viewFavMsgs(queue<Message> fav);
+
+	void pinContact(int c);
 
 };
 
